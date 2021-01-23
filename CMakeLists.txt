@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.17)
+project(Lab_10)
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread" )
+
+set(CMAKE_CXX_STANDARD 14)
+set(Menu Menu/menu.h Menu/menu_item.h Menu/menu.cpp Menu/menu_item.cpp )
+set(Zadania Zadania/Zadanie101.cpp Zadania/Zadanie101.h Zadania/Zadanie102.cpp Zadania/Zadanie102.h Zadania/Zadanie103.cpp Zadania/Zadanie103.h Zadania/Zadanie104.cpp Zadania/Zadanie104.h)
+set(MultiTH Zadania/Zadanie105.cpp Zadania/Zadanie105.h)
+#add_executable(MultiBoi ${MultiTH} ${Menu})
+add_executable(Lab_10 main.cpp ${Menu} ${Zadania} ${MultiTH})
+target_include_directories(Lab_10 PRIVATE Menu)
+#target_include_directories(MultiBoi PRIVATE Menu)
+target_link_libraries(Lab_10 PRIVATE Threads::Threads)
